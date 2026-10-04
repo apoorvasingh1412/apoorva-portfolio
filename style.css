@@ -1778,3 +1778,144 @@ button {
         font-size: 12px;
     }
 }
+
+
+/* =========================
+   MOBILE RESPONSIVE FIX
+========================= */
+
+@media (max-width: 768px) {
+
+    html,
+    body {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    /* Full-screen mobile menu */
+    .nav-menu {
+        position: fixed;
+        inset: 0;
+        width: 100%;
+        max-width: 100%;
+        height: 100vh;
+        height: 100dvh;
+        padding: 90px 9% 40px;
+        background: #261918;
+        border: none;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 30px;
+        transform: translateX(100%);
+        transition: transform 0.35s ease;
+        z-index: 200;
+        overflow-y: auto;
+    }
+
+    .nav-menu.active {
+        transform: translateX(0);
+        right: 0;
+    }
+
+    .nav-link {
+        font-size: 24px;
+    }
+
+    .close-menu {
+        top: 25px;
+        right: 7%;
+        font-size: 38px;
+    }
+
+    /* Prevent sections from becoming wider than phone */
+    .hero,
+    .about,
+    .journey,
+    .work-section,
+    .contact-section,
+    .footer {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .hero {
+        overflow: hidden;
+    }
+
+    .hero-content,
+    .about-container,
+    .journey-container,
+    .contact-container,
+    .work-grid {
+        min-width: 0;
+        width: 100%;
+    }
+
+    .hero-visual {
+        width: min(85%, 370px);
+    }
+
+    .about-container {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .journey-container {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .work-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .contact-container {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .work-card,
+    .contact-form,
+    .timeline-card {
+        min-width: 0;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+        max-width: 100%;
+    }
+}
+
+/* Smaller phones */
+@media (max-width: 380px) {
+
+    .nav-menu {
+        padding-left: 7%;
+        padding-right: 7%;
+    }
+
+    .nav-link {
+        font-size: 21px;
+    }
+
+    .hero h1 {
+        font-size: clamp(36px, 10vw, 41px);
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .hero-buttons a {
+        width: 100%;
+    }
+
+    .hero-visual {
+        width: 88%;
+    }
+
+    .about-right {
+        width: 90%;
+    }
+}
