@@ -1,35 +1,38 @@
 const hamburger = document.getElementById("hamburger");
-const closeMenu = document.getElementById("closeMenu");
 const navMenu = document.getElementById("navMenu");
 const navLinks = document.querySelectorAll(".nav-link, .mobile-contact");
 
-function openMenu() {
-    navMenu.classList.add("active");
-    hamburger.setAttribute("aria-expanded", "true");
-    document.body.style.overflow = "hidden";
+function toggleMenu() {
+    const isOpen = navMenu.classList.toggle("active");
+
+    hamburger.classList.toggle("active", isOpen);
+    hamburger.setAttribute("aria-expanded", isOpen);
+    document.body.style.overflow = isOpen ? "hidden" : "";
 }
 
-function hideMenu() {
-    navMenu.classList.remove("active");
-    hamburger.setAttribute("aria-expanded", "false");
-    document.body.style.overflow = "";
-}
-
-hamburger.addEventListener("click", openMenu);
-
-closeMenu.addEventListener("click", hideMenu);
+// Open and close menu using the same hamburger
+hamburger.addEventListener("click", toggleMenu);
 
 // Close menu after clicking any navigation link
 navLinks.forEach(link => {
-    link.addEventListener("click", hideMenu);
+    link.addEventListener("click", () => {
+        navMenu.classList.remove("active");
+        hamburger.classList.remove("active");
+        hamburger.setAttribute("aria-expanded", "false");
+        document.body.style.overflow = "";
+    });
 });
 
 // Close menu with Escape key
 document.addEventListener("keydown", (event) => {
     if (event.key === "Escape") {
-        hideMenu();
+        navMenu.classList.remove("active");
+        hamburger.classList.remove("active");
+        hamburger.setAttribute("aria-expanded", "false");
+        document.body.style.overflow = "";
     }
 });
+
 // CONTACT FORM - opens visitor's email app
 const contactForm = document.getElementById("contactForm");
 
